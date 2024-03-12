@@ -1,13 +1,17 @@
 package ru.digital.image.picture.images;
 
+import com.example.demo.images.OnePointColorGetter;
+import com.example.demo.images.RGB;
+import ru.digital.image.picture.images.changer.PointColorGetter;
+
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class MinMaxColorOfPointGetter implements OnePointColorGetter {
+public class MeanColorOfPointGetter implements PointColorGetter {
 
 
-    public MinMaxColorOfPointGetter(int[] defaultColors){
+    public MeanColorOfPointGetter(int[] defaultColors){
         this.defaultColors = Arrays.stream(defaultColors).mapToObj(
                 it -> new RGB(it)
         ).collect(Collectors.toList());
@@ -17,7 +21,7 @@ public class MinMaxColorOfPointGetter implements OnePointColorGetter {
         var current = new RGB(color);
         Object[] obj = defaultColors.stream().map(
                 it ->
-                        new Object[]{it, it.max(current)}
+                        new Object[]{it, it.mse(current)}
         ).min(
                 (it1, it2) -> {
                     if ((double) it1[1] > (double) it2[1])
