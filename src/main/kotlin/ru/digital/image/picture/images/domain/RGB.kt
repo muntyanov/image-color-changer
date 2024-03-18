@@ -11,6 +11,12 @@ class RGB {
         blue = color and 0xFF
     }
 
+    constructor(r: Int, g: Int, b: Int) {
+        red = r
+        green = g
+        blue = b
+    }
+
 
     var red: Int = 0
     var green: Int = 0

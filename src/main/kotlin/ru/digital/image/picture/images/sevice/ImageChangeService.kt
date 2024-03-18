@@ -4,6 +4,7 @@ import jakarta.annotation.PostConstruct
 import org.springframework.stereotype.Service
 import ru.digital.image.picture.images.changer.ImageColorChange
 import ru.digital.image.picture.images.changer.MinMaxColorOfPointGetter
+import ru.digital.image.picture.images.domain.RGB
 import java.awt.image.BufferedImage
 import java.io.File
 import java.io.IOException
@@ -21,7 +22,18 @@ class ImageChangeService {
     fun change(imgPath: String, imgDestPath: String) {
         val icm = ImageColorChange(
             listOf(
-                MinMaxColorOfPointGetter(intArrayOf(200, 400, 600, 800, 1000, 6000, 10000))
+                MinMaxColorOfPointGetter(
+                    intArrayOf(
+                        RGB(0, 0, 0).toInt(),
+                        RGB(255, 255, 255).toInt(),
+                        RGB(255, 0, 0).toInt(),
+                        RGB(0, 255, 0).toInt(),
+                        RGB(0, 0, 255).toInt(),
+                        RGB(122, 0, 0).toInt(),
+                        RGB(0, 122, 0).toInt(),
+                        RGB(0, 0, 122).toInt()
+                    )
+                )
             )
         )
 
