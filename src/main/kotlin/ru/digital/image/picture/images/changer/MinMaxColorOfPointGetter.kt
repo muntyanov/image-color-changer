@@ -5,8 +5,8 @@ import java.util.*
 import java.util.function.Function
 import java.util.stream.Collectors
 
-class MinMaxColorOfPointGetter(defaultColors: IntArray?) : PointColorGetter {
-    operator fun get(color: Int): Int {
+class MinMaxColorOfPointGetter(defaultColors: IntArray?) : OnePointColorGetter {
+    override operator fun get(color: Int): Int {
         val current = RGB(color)
         val obj = defaultColors.stream().map { it: RGB ->
             arrayOf(

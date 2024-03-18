@@ -1,6 +1,7 @@
 package ru.digital.image.picture.images.domain
 
 import java.util.*
+import kotlin.math.sqrt
 
 class RGB {
 
@@ -52,7 +53,7 @@ class RGB {
         )
     }
 
-    fun max(rbg: RGB): Double {
+    fun  max(rbg: RGB): Double {
         return MAX(
             red, rbg.red,
             green, rbg.green,
@@ -62,7 +63,7 @@ class RGB {
 }
 
 fun MSE(r1: Int, g1: Int, b1: Int, r2: Int, g2: Int, b2: Int): Double {
-    return Math.sqrt(
+    return sqrt(
         (
             (r1 - r2) * (r1 - r2) + (g1 - g2) * (g1 - g2) + (b1 - b2) * (b1 - b2)
             ).toDouble()
